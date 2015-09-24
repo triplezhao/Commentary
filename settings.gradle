@@ -1,0 +1,2 @@
+include ':app',':youkuLoginSDK',':youkuPlayerOpenSDK',':playerDemo', ':librarygithub'
+project(':librarygithub').projectDir = new File('../potato_framework/library')
