@@ -3,16 +3,17 @@ package com.potato.demo.youku.ui.adapter;
 import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.potato.chips.base.BaseListAdapter;
-import com.potato.chips.base.BaseViewHolder;
 import com.potato.chips.common.PageCtrl;
 import com.potato.chips.util.ImageLoaderUtil;
 import com.potato.demo.R;
 import com.potato.demo.databinding.ItemYkVideoCachedBinding;
+import com.potato.library.adapter.BaseListAdapter;
+import com.potato.library.adapter.BaseViewHolder;
 import com.youku.service.download.DownloadInfo;
 
 /**
@@ -26,8 +27,7 @@ public  class YKVideoCachedAdapter extends BaseListAdapter {
     }
 
     @Override
-    public VH onCreateViewHolder(int position, int type, ViewGroup parent) {
-
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         ItemYkVideoCachedBinding binding = DataBindingUtil.inflate(
                 LayoutInflater.from(parent.getContext()),
                 R.layout.item_yk_video_cached,
@@ -40,9 +40,9 @@ public  class YKVideoCachedAdapter extends BaseListAdapter {
     }
 
     @Override
-    public void onBindViewHolder(BaseViewHolder holder, Object object, int position, int type) {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         final ItemYkVideoCachedBinding binding = (ItemYkVideoCachedBinding) ((VH)holder).getBinding();
-        final DownloadInfo bean = (DownloadInfo) object;
+        final DownloadInfo bean = (DownloadInfo) mData.get(position);
         //展示视频标题
         binding.videoTitle.setText(bean.title);
 
@@ -56,8 +56,8 @@ public  class YKVideoCachedAdapter extends BaseListAdapter {
 
             }
         });
-
     }
+
 
     public static class VH extends BaseViewHolder {
 

@@ -5,39 +5,39 @@ import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.os.AsyncTask;
 import android.os.Handler;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.potato.chips.base.BaseListAdapter;
-import com.potato.chips.base.BaseViewHolder;
 import com.potato.chips.util.ImageLoaderUtil;
 import com.potato.demo.R;
 import com.potato.demo.databinding.ItemYkVideoDownloadingBinding;
+import com.potato.library.adapter.BaseListAdapter;
+import com.potato.library.adapter.BaseViewHolder;
 import com.youku.service.download.DownloadInfo;
 import com.youku.service.download.DownloadManager;
 
 /**
  * Created by ztw on 2015/9/8.
  */
-public  class YKVideoCachingAdapter extends BaseListAdapter {
+public class YKVideoCachingAdapter extends BaseListAdapter {
 
 
     Handler mHandler;
     DownloadManager downloadManager;
 
-    public YKVideoCachingAdapter(Context context,Handler handler) {
+    public YKVideoCachingAdapter(Context context, Handler handler) {
         super(context);
         this.mHandler = handler;
         downloadManager = DownloadManager.getInstance();
     }
-    
-    
-    @Override
-    public VH onCreateViewHolder(int position, int type, ViewGroup parent) {
 
+
+    @Override
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         ItemYkVideoDownloadingBinding binding = DataBindingUtil.inflate(
                 LayoutInflater.from(parent.getContext()),
                 R.layout.item_yk_video_downloading,
@@ -47,13 +47,12 @@ public  class YKVideoCachingAdapter extends BaseListAdapter {
         holder.setBinding(binding);
 
         return holder;
-
     }
 
     @Override
-    public void onBindViewHolder(BaseViewHolder holder, Object object, int position, int type) {
-        final ItemYkVideoDownloadingBinding binding = (ItemYkVideoDownloadingBinding)((VH)holder).getBinding();
-        final DownloadInfo info = (DownloadInfo) object;
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        final ItemYkVideoDownloadingBinding binding = (ItemYkVideoDownloadingBinding) ((VH) holder).getBinding();
+        final DownloadInfo info = (DownloadInfo) mData.get(position);
 
         TextView tv_title = binding.title;                    //视频标题
         final Button btn_pause_continue = binding.pause;       //暂停/继续 按钮
@@ -122,8 +121,6 @@ public  class YKVideoCachingAdapter extends BaseListAdapter {
 
 
         });
-
-
     }
 
 

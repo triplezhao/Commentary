@@ -9,10 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.potato.chips.base.BaseFragment;
-import com.potato.chips.base.BaseListAdapter;
 import com.potato.demo.R;
 import com.potato.demo.databinding.FragmentYkCachingBinding;
 import com.potato.demo.youku.ui.adapter.YKVideoCachingAdapter;
+import com.potato.library.adapter.BaseListAdapter;
 import com.youku.service.download.DownloadInfo;
 import com.youku.service.download.DownloadManager;
 
