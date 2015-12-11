@@ -40,7 +40,9 @@ public class MainTabActivity extends BaseTabHostActivity {
                 iv_icon.setImageResource(R.drawable.selector_nav_explore);
                 tabItem.setTitle("发现");
                 tabItem.setView(tabItemView);
-                tabItem.setIntent(new Intent(getApplication(), YKActivity.class));
+                Intent intent1 = new Intent(getApplication(), WebViewActivity.class);
+                intent1.putExtra(WebViewActivity.URL_ADDRESS, "http://m.weibo.cn/d/superhebefans");
+                tabItem.setIntent(new Intent(intent1));
                 break;
             case 2:
 
@@ -48,7 +50,9 @@ public class MainTabActivity extends BaseTabHostActivity {
 
                 tabItem.setTitle("野店");
                 tabItem.setView(tabItemView);
-                tabItem.setIntent(new Intent(getApplication(), WebViewActivity.class));
+                Intent intent2 = new Intent(getApplication(), WebViewActivity.class);
+                intent2.putExtra(WebViewActivity.URL_ADDRESS, "https://shop108703695.taobao.com");
+                tabItem.setIntent(intent2);
                 break;
             case 3:
 
